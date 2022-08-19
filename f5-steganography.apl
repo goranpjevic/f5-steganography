@@ -157,7 +157,6 @@ parse_all_bits←{
       block
     }¨⍳×/⌈8÷⍨dx dy
     ⊃⍪/,/(⌈8÷⍨dx dy)⍴all_blocks
-    ⍝img_vals←all_blocks
   }¨⍳noc
   m img_vals
 }
