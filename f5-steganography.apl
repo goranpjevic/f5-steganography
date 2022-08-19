@@ -1,5 +1,10 @@
 ⍝ split array into blocks of size 8 8
-split←{ia←({0⍪⍨0⍪0,⍨0,⍵}⍣7)⍵⋄{⍵⌷({⊂⍵}⌺8 8)ia}¨,⊃∘.,/{11+8×¯1+⍳⌈⍵÷8}¨⍴⍵}
+split←{
+  ia←({0⍪⍨0⍪0,⍨0,⍵}⍣7)⍵
+  ⍝ indices of blocks to take
+  ib←,⊃∘.,/{11+8×¯1+⍳⌈⍵÷8}¨⍴⍵
+  {⍵⌷({⊂⍵}⌺8 8)ia}¨ib
+}
 
 fdct←{
   ia←⍵
