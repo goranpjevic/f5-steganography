@@ -87,19 +87,15 @@
 				  :if-exists :overwrite
 				  :if-does-not-exist :create
 				  :element-type 'unsigned-byte)
-      (with-open-file (output-file output-filename
-				   :direction :output
-				   :if-exists :overwrite
-				   :if-does-not-exist :create
-				   :element-type 'unsigned-byte)
-	(let ((f5se-output (april:april-c "f5se"
-					  (make-array
-					    3 :initial-contents
-					    (list (read-list-of-bits-from-file input-file)
-						  (parse-integer N)
-						  (parse-integer M))))))
-	  (write-bits-to-file message-file (coerce (elt f5se-output 0) 'list))
-	  (write-bits-to-file output-file (coerce (elt f5se-output 1) 'list)))))))
+      (let ((f5se-output (april:april-c "f5se"
+					(make-array
+					  3 :initial-contents
+					  (list (coerce (read-list-of-bits-from-file input-file)
+							'(vector fixnum))
+						(parse-integer N)
+						(parse-integer M))))))
+	(write-bits-to-file message-file (coerce (elt f5se-output 0) 'list))
+	(opticl:write-png-file output-filename (elt f5se-output 1))))))
 
 (defun main (argv)
   (if (/= 6 (length argv))
