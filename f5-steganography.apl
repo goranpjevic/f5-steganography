@@ -34,13 +34,13 @@ codeAC←{
     out←0,((6⍴2)⊤≢z),((4⍴2)⊤nb),((nb⍴2)⊤max+⊃acv),outb
     out
   }
-  o,←,/nzb¨↑ifn↑sACs
+  o,←,nzb¨↑ifn↑sACs
   o,←znzb¨↓{(⌊2÷⍨≢⍵)2⍴⍵}ifn↓sACs
   ⍝ is last 0
   ilz←0=⊃⊃⌽sACs
   zb←{
     $[0=ilz;⍬;
-    out←0,((6⍴2)⊤≢⍵)
+    out←0,((6⍴2)⊤≢,⍵)
     out]
   }
   ⊃,/o,zb↑ilz↑⌽sACs
