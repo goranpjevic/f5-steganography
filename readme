@@ -1,3 +1,27 @@
                                 f5-steganography
 
 implementation of the f5 steganography algorithm.
+
+note:
+
+the f5-steganography algorithm isn't implemented yet.
+
+usage:
+
+args:  [input_filename] [option] [message_filename] [N] [M] [output_filename]
+
+  input_filename : path to the input file
+
+  option :
+
+    h : hide message
+
+    e : extract message
+
+  message_filename : path to file containing the message to hide or extract to
+
+  N : compression threshold
+
+  M : number of unique coefficient triples used in f5 steganography
+
+  output_filename : path to the output file
